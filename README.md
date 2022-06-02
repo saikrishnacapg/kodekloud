@@ -1,9 +1,14 @@
 # kodekloud
 Task 1 - Docker Swarm Stack that would run a container with privileged mode
+   
    step 1: Install docker and docker-compose
+   
    step 2: docker swarm init
+   
    step 3: go to the task1 folder run the following command
+   
    step 4: docker service deploy --compile-file docker-compose.yml task1
+   
    step 5: Run the following Command 
       
       docker ps 
