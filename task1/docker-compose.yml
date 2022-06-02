@@ -1,0 +1,13 @@
+---
+version: '3.0'
+services:
+  nginx-test:
+    image: docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: docker run --rm -p80:80 --privileged --name nginx-service nginx:latest
+    deploy:
+      mode: global
+      restart_policy:
+        condition: none
+
