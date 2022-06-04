@@ -1,0 +1,5 @@
+profile aa-disable-write flags={attach_disconnected} {
+    file,
+    # Deny all file writes.
+    deny /** w,
+}
