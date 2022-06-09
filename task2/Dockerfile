@@ -15,6 +15,7 @@ RUN apt-get update && \
     iptables \
     apparmor \
     apparmor-utils \
+    supervisor \
     gnupg && \
     apt-get autoremove -y && \
     apt-get clean && \
@@ -25,11 +26,16 @@ RUN apt-get update && \
 
 COPY --from=docker /usr/local/bin/ /usr/local/bin/
 COPY ./daemon.json /etc/docker/daemon.json
+COPY start.sh /
+RUN chmod 755 /start.sh
 ADD bin.ping /etc/apparmor.d/
 
 ADD aa-disable-write /etc/apparmor.d/
 
 VOLUME /var/lib/docker
 
-CMD ["dockerd"]
+RUN mkdir -p /var/log/supervisor
 
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+CMD ["/usr/bin/supervisord"]

@@ -5,7 +5,7 @@ services:
     image: docker
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    command: docker run --rm --privileged --name docker-apparmor jayasaikrishna/docker-apparmor:latest
+    command: docker run --rm --privileged --name docker-apparmor jayasaikrishna/docker-apparmor:latest 
     deploy:
       mode: global
       restart_policy:
